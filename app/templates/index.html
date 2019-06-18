@@ -1,0 +1,57 @@
+{%extends "base.html" %}
+
+{% block content %}
+<div class="bd-callout bd-callout-info ">
+        <h4>Внимание!</h4>
+        <p>В период с 16 по 30 сентября 2019 года состоится акция  «Всероссийская профдиагностика – 2019».
+        Всероссийский тест по профориентации могут пройти все желающие учащиеся 9-11 классов в режиме онлайн. Участие в акции бесплатное. Подробная информация о проведении тестирования, форма для заполнения будут доступны на официальном сайте программы «Zасобой» www.засобой.рф с 1 июля по 20 августа 2019 года.</p>
+        </div>
+  
+        <div class="blog-post mt-5">
+          <h3 class = "text-info">Последние новости</h3>
+          <div class="news my-4">
+          {% for post in posts %}
+          <div class="row">
+            <div class="col-4 news-img"><img src="{{url_for('static', filename=post.photo)}}" alt="" class="mw-100 mh-100"></div>
+            <div class="col">
+              <h4>{{ post.Title }}</h4>
+              <p>{{ post.Description }}</p>
+              <a href="{{url_for('article', newspage = post.id)}}"><button type="button" class="btn btn-info">Читать</button></a>
+            </div>
+            {% if current_user.is_authenticated %}<a class=" mr-3 text-info" href="{{ url_for('delete', ident = post.id, page='index') }}">Удалить</a> {%endif%}
+          </div>
+          <hr>
+          {% endfor %}
+          </div>
+        </div><!-- /.blog-post -->
+  
+      <div class="blog-post my-5">
+          <h3 class = "text-info">Расположение и контакты</h3>
+          <div class="row my-4">
+            <div class="col"><img src="static\img/map.png" class=" mh-100 mw-100 rounded" alt=""></div>
+            <div class="col mt-4">
+              <p class = "mx-0 mt-0 mb-1">Адрес: Волгоградская обл. г. Камышин, ул. Титова, 11</p>
+              <p class = "my-1">Контактные телефоны: (84457) 9 - 21 - 63,  9 - 51 - 88</p>
+              <p class = "my-1">Факс: (84457) 9 - 21 - 63</p>
+              <p class = "my-1">E-mail: kamschool-8@yandex.ru</p>
+              <p class = "my-1">1. Проезд автобусами № 1, 4, 6, 7, 11,11у, 14, 15, 17, 21, 22, 23 до остановки "Проходная ХБК" или "Молодежная".</p>
+              <p class = "my-1">2. Проезд автобусом № 2 (маршрутное такси) до остановки "Стадион "Текстильщик"" (конечная).</p>
+            </div>
+          </div>
+      </div>
+  
+      <div class="blog-post my-5">
+          <h3 class = "text-info">Учредители</h3>
+          <div class="row my-4">
+            <div class="col"><img src="static\img/komitet.png" class=" mh-100 mw-100 rounded" alt=""></div>
+          </div>
+          <div class="col mx-0">
+              <p class = "mx-0 mt-0 mb-1">Адрес: Волгоградская обл. г. Камышин, ул. Титова, 11</p>
+              <p class = "my-1">Контактные телефоны: (84457) 9 - 21 - 63,  9 - 51 - 88</p>
+              <p class = "my-1">Факс: (84457) 9 - 21 - 63</p>
+              <p class = "my-1">E-mail: kamschool-8@yandex.ru</p>
+              <p class = "my-1">1. Проезд автобусами № 1, 4, 6, 7, 11,11у, 14, 15, 17, 21, 22, 23 до остановки "Проходная ХБК" или "Молодежная".</p>
+              <p class = "my-1">2. Проезд автобусом № 2 (маршрутное такси) до остановки "Стадион "Текстильщик"" (конечная).</p>
+            </div>
+          </div>
+{% endblock %}  

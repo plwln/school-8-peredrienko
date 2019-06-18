@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+
+  <title>Document</title>
+</head>
+<body>
+<div class="container px-0" id="wrapper">
+    <div class="container px-0">
+  <header class="blog-header mx-5 py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-3 d-none d-xl-block"><img src="http://placehold.it/250x135" alt=""></div>
+      <div class="col">
+        <div class="row">
+          <div class="col p-4">
+            <h1 class = "font-weight-bold text-info font-size">Муниципальное бюджетное общеобразовательное учреждение
+            средняя школа №8 городского округа - город Камышин Волгоградской области
+            МБОУ СШ №8</h1>
+          </div>
+        </div>
+</div>
+    </div>
+  </header>
+
+  <div class="nav-scroller py-1 mb-2 mx-5">
+    <nav class="nav  d-flex justify-content-between">
+      <a class="p-2 text-info " href="{{ url_for('index') }}">Главная</a>
+      <a class="p-2 text-info" href="{{ url_for('news', page = 1) }}">Новости</a>
+      <a class="p-2 text-info" href="#">Приём в школу</a>
+      <a class="p-2 text-info" href="{{ url_for('gallery', page = 1) }}">Галерея</a>
+      <a class="p-2 text-info" href="#">Методическая работа</a>
+      <a class="p-2 text-info" href="#">Персональные страницы</a>
+      <a class="p-2 text-info" href="#">Это важно знать</a>
+      <a class="p-2 text-info" href="#">Профсоюз</a>
+      {% if current_user.is_authenticated %}<a class="p-2 text-info" href="{{ url_for('logout') }}">Выход</a> {%endif%}
+    </nav>
+  </div>
+      <div id="HeadCarousel" class="carousel slide my-4" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+            <img class="d-block img-fluid" src="http://placehold.it/1200x200" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block img-fluid" src="http://placehold.it/1200x200" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block img-fluid" src="http://placehold.it/1200x200" alt="Third slide">
+          </div>
+        </div>
+      </div>
+
+  <div class="row mb-2">
+  </div>
+</div>
+
+<main role="main" class="container">
+  <div class="row">
+
+    <div class="col-md-3 blog-sidebar " id="sidebar">
+      <ul class="p-3 list-group nav flex-column">
+               <li class="nav-item">
+                   <a class="nav-link px-0 py-1 collapsed" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Электронный дневник</a>
+                   <div class="collapse" id="submenu1" aria-expanded="false">
+                       <ul class="flex-column pl-2 nav">
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Расписание</a></li>
+                        </ul>
+                    </div>
+                  </li>
+
+               <li class="nav-item">
+                   <a class="nav-link px-0 py-1 collapsed" href="#submenu2" data-toggle="collapse" data-target="#submenu2">СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</a>
+                   <div class="collapse" id="submenu2" aria-expanded="false">
+                       <ul class="flex-column pl-2 nav">
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Основные сведения</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Структура и органы управления образовательной организацие</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Документы</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Образование</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Образовательные стандарты</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Руководство и педагогический состав школы № 8</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Материально-техническое обеспечение и оснащенность</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Стипендии и иные виды материальной поддержки</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Платные образовательные услуги</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Финансово-хозяйственная деятельность школы</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Вакантные места для приема и перевода</a></li>
+                        </ul>
+                    </div>
+                  </li>
+               <li class="nav-item">
+                   <a class="nav-link px-0 py-1 collapsed" href="#submenu3" data-toggle="collapse" data-target="#submenu3">Визитная карточка</a>
+                   <div class="collapse" id="submenu3" aria-expanded="false">
+                       <ul class="flex-column pl-2 nav">
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Визитная карточка</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">История школы</a></li>
+                        </ul>
+                    </div>
+                  </li>
+               <li class="nav-item">
+                   <a class="nav-link px-0 py-1 collapsed" href="#submenu4" data-toggle="collapse" data-target="#submenu4">Воспитательная работа</a>
+                   <div class="collapse" id="submenu4" aria-expanded="false">
+                       <ul class="flex-column pl-2 nav">
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">ПЛАН ВОСПИТАТЕЛЬНОЙ РАБОТЫ НА 2018-2019 УЧЕБНЫЙ ГОД</a></li>
+                           <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Архив 2016-2017</a></li>
+                           <li class="nav-item">
+                               <a class="nav-link px-0 py-1 collapsed py-0" href="#submenu4sub1" data-toggle="collapse" data-target="#submenu4sub1">К 100-летию А.П. Маресьева</a>
+                               <div class="collapse small" id="submenu4sub1" aria-expanded="false">
+                                   <ul class="flex-column nav pl-4">
+                                     <li class="nav-item">
+                                         <a class="nav-link px-0 py-1 p-0" href="">
+                                             <i class="fa fa-fw fa-clock-o"></i> Герой страны
+                                         </a>
+                                     </li>
+                                       <li class="nav-item">
+                                           <a class="nav-link px-0 py-1 p-0" href="">
+                                               <i class="fa fa-fw fa-clock-o"></i> Камышанин Маресьев Алексей Петрович
+                                           </a>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a class="nav-link px-0 py-1 p-0" href="">
+                                               <i class="fa fa-fw fa-dashboard"></i> Маресьев 100 добрых дел
+                                           </a>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a class="nav-link px-0 py-1 p-0" href="">
+                                               <i class="fa fa-fw fa-bar-chart"></i> "Я люблю тебя жизнь"
+                                           </a>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a class="nav-link px-0 py-1 p-0" href="">
+                                               <i class="fa fa-fw fa-compass"></i> Итоги городского конкурса сочинений «Я люблю тебя, жизнь»
+                                           </a>
+                                       </li>
+                                       <li class="nav-item">
+                                           <a class="nav-link px-0 py-1 p-0" href="">
+                                               <i class="fa fa-fw fa-compass"></i> «Юные маресьевцы»
+                                           </a>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </li>
+                       </ul>
+                    </div>
+                  </li>
+               <li class="nav-item"><a class="nav-link px-0 py-1 " href="">75 лет Сталинградской битвы</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Готов к труду и обороне (ГТО)</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Родительский университет</a></li>
+              <li class="nav-item">
+                  <a class="nav-link px-0 py-1 collapsed" href="#submenu5" data-toggle="collapse" data-target="#submenu5">Информационная безопасность</a>
+                  <div class="collapse" id="submenu5" aria-expanded="false">
+                      <ul class="flex-column pl-2 nav">
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Локальные нормативны акты</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Нормативное регулирование</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Педагогическим работникам</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Обучающимся</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Родителям</a></li>
+                          <li class="nav-item"><a class="nav-link px-0 py-1 py-0" href="">Детские безопасные сайты</a></li>
+                       </ul>
+                   </div>
+                 </li>
+              <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Антикоррупционная деятельность</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Государственная Итоговая Аттестация</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Советы психолога</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Здоровые дети в здоровой семье</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Учебная работа</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Профилактическая работа</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Правоприменительные процедуры</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Сайты по профилактике</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Научно-исследовательская деятельность</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Аттестация педагогов</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Акция "Сообщи, где торгуют смертью"</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Телефонная линия "Ребенок в опасности"</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Безопасность в сети Интернет</a></li>
+               <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Региональная акция "Дети и окна"</a></li>
+
+               <li class="nav-item">
+                   <a class="nav-link px-0 py-1 collapsed" href="#submenu6" data-toggle="collapse" data-target="#submenu6">Памятки</a>
+                   <div class="collapse" id="submenu6" aria-expanded="false">
+                       <ul class="flex-column pl-2 nav">
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Памятка гражданам об их действиях при установлении уровней террористической опасности</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Памятка "Поведение при обнаружении подозрительных предметов"</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Памятка антинаркотической направленности для родителей</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Памятки по противопожарной безопасности</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Тонкий лед</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">Детский телефон доверия</a></li>
+                         <li class="nav-item"><a class="nav-link px-0 py-1" href="#">О педикулезе</a></li>
+                        </ul>
+                    </div>
+                  </li>
+            </ul>
+      <div class="row">
+        <p class = "ml-4 mt-4 font-weight-bold">Ссылки</p>
+      </div>
+      <div class="row links"><a href=""></a>
+        <div class="col ml-2"><a href=""><img src="{{url_for('static',filename='img/logos/1.gif')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/2.png')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/3.jpg')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/4.jpg')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/5.png')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/6.gif')}}" alt=""></a></div>
+        <div class="col ml-2 mt-2"><a href=""><img src="{{url_for('static',filename='img/logos/7.png')}}" alt=""></a></div>
+      </div>
+
+    </div><!-- /.blog-sidebar -->
+    <div class="col-md-9 blog-main">
+        {% block content %}{% endblock %}
+    </div><!-- /.blog-main -->
+
+
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+ <footer role="contentinfo" class="footer ">
+   <div class="container">
+     <span class="text-muted">© Передриенко А.И., 1999 - 2077.</span>
+    </div>
+ </footer>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

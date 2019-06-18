@@ -1,0 +1,37 @@
+{%extends "base.html" %}
+
+{% block content %}
+<div class="container gallery-container">
+
+    <h1 class = "text-info mt-3 mb-5">Галерея</h1>
+    <div class="tz-gallery">
+        <div class="row">
+            {%for picture in pictures.items[::-1]%}
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="{{url_for('static', filename=picture.photo)}}">
+                        <img src="{{url_for('static', filename=picture.photo)}}" class = "w-100" alt="Park">
+                    </a>
+                    <div class="caption">
+                        <h3>{{ picture.Title }}</h3>
+                        <p>{{picture.date}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<nav aria-label="Галерея">
+  <ul class="pagination justify-content-center">
+        {% if pictures.has_prev %}<li class="page-item"><a class="page-link" href="{{ url_for('gallery', page = pictures.prev_num) }}">«</a></li>{% endif %}
+        {% if pictures.has_next%}<li class="page-item"><a class="page-link" href="{{ url_for('gallery', page = pictures.next_num) }}">»</a></li>{% endif %}
+        
+  </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+  <script>
+      baguetteBox.run('.gallery-container');
+  </script>
+</nav>
+{% endblock %} 

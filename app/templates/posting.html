@@ -1,0 +1,16 @@
+<form action="" method="post" enctype=multipart/form-data>
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(cols=32, rows=4) }}<br>
+
+        {{ form.description.label }}<br>
+        {{ form.description(cols=48, rows=12) }}<br>
+        {{ form.post.label }}<br>
+        {{ form.post(cols=128, rows=36) }}<br>
+        <p><input type=file name=file>
+        {% for error in form.post.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>

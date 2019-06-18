@@ -1,0 +1,128 @@
+#wrapper {
+  box-shadow: -1px 3px 12px -9px #000000;
+  background-color: white;
+}
+body {
+  background-color: #E0F8FF;
+  min-height: 100vh;
+  font: normal 16px sans-serif;
+}
+.nav-link[data-toggle].collapsed:after {
+    content: "▾";
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: "▴";
+}
+.nav-item {
+  padding:3px !important;
+  border-bottom: 1px solid gainsboro;
+}
+.nav-link {
+  color:#17a2b8;
+
+}
+.bd-callout-info {
+    border-left-color: #17a2b8;
+}
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-left-color: #17a2b8;
+    border-radius: .25rem;
+    background-color: #E0F8FF;
+}
+
+.carousel {
+  height: 200px !important;
+  width: 100% !important;
+}
+.carousel-inner img {
+  height: 200px !important;
+
+  margin: 0 auto;
+}
+.sidebar-column {
+  position: relative;
+  width: 100%;
+  -ms-flex: 0 0 16.666667%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+.list-group-item {
+  padding:0;
+  padding-left: 8px;
+}
+#face-image {
+  max-width:300px;
+  max-height: 400px;
+}
+#links img {
+  width: 120px;
+}
+h1{
+  font-weight: normal;
+  font-size: 20px;
+}
+h2, .h2 {
+  margin: 0;
+    font-size: 18px !important;
+    font-weight: normal;
+}
+.links img {
+  max-width:130px;
+  max-height: 59px;
+}
+
+.gallery-container h1 {
+    text-align: left;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+    color: #58595a;
+}
+
+.gallery-container p.page-description {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 18px;
+    color: #85878c;
+}
+
+/* Styles for the gallery */
+
+.tz-gallery .thumbnail {
+    padding: 0;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.tz-gallery img {
+    border-radius: 2px;
+}
+
+.tz-gallery .caption{
+    padding: 26px 30px;
+    text-align: center;
+}
+
+.tz-gallery .caption h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.tz-gallery .caption p {
+    font-size: 12px;
+    color: #7b7d7d;
+    margin: 0;
+}
+
+.baguetteBox-button {
+    background-color: transparent !important;
+}
+
+.post--content {
+    text-align: left;
+}

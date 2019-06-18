@@ -1,0 +1,29 @@
+{%extends "base.html" %}
+
+{% block content %}
+  <div class="post--item post--single text-center">
+      <!-- Post Title Start -->
+      <div class="post--title">
+          <h3 class = "text-info mt-2 mb-3">{{post.Title}}</h3>
+          <div class="row">
+            <div class="col mb-4">
+              <img src="{{url_for('static', filename=post.photo)}}" class = "d-block img-fluid w100" alt="">
+            </div>
+          </div>
+      </div>
+      <!-- Post Title End -->
+      <!-- Post Content Start -->
+      <div class="post--content">
+          
+        <p>{{post.post}}</p>
+
+      </div>
+      <!-- Post Content End -->
+
+      <!-- Post Footer Start -->
+      <div class="post--footer clearfix pt-40 text-left">
+          <p>Дата публикации: {{post.date}}</p>
+      </div>
+      <!-- Post Footer End -->
+  </div>
+{% endblock %}  
