@@ -67,21 +67,23 @@ def gallery(page):
 
 @app.route('/posting', methods=['GET', 'POST'])
 def posting():
-    form = PostForm()
-    if request.method == 'POST':
-        file = request.files['file']
-        url = os.path.join('uploads/', file.filename)
-        if file and (file.content_type.rsplit('/', 1)[1] in ALLOWED_EXTENSIONS).__bool__():
-            filename = secure_filename(file.filename)
-            file.save(UPLOAD_FOLDER+filename)
-            url = os.path.join('uploads/', filename)
-        today = datetime.datetime.today().strftime("%Y.%m.%d %H:%M")
-        post = Post(Title=form.title.data, Description=form.description.data, post=form.post.data, photo=url, date=today)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for("posting.html", form=form))
-    return render_template("posting.html", form=form)
+    if current_user.is_authenticated:
+        form = PostForm()
+        if request.method == 'POST':
+            file = request.files['file']
+            url = os.path.join('uploads/', file.filename)
+            if file and (file.content_type.rsplit('/', 1)[1] in ALLOWED_EXTENSIONS).__bool__():
+                filename = secure_filename(file.filename)
+                file.save(UPLOAD_FOLDER+filename)
+                url = os.path.join('uploads/', filename)
+            today = datetime.datetime.today().strftime("%Y.%m.%d %H:%M")
+            post = Post(Title=form.title.data, Description=form.description.data, post=form.post.data, photo=url, date=today)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post is now live!')
+            return redirect(url_for("posting.html", form=form))
+        return render_template("posting.html", form=form)
+    else: redirect(url_for("index"))
 
 @app.route('/add_picture', methods=['GET', 'POST'])
 def add_picture():
@@ -109,3 +111,9 @@ def delete(ident, page):
     Post.query.filter(Post.id == ident).delete()
     db.session.commit()
     return redirect(url_for(page))
+
+@app.route('/deletepic/<int:ident>')
+def deletepic(ident):
+    Picture.query.filter(Picture.id == ident).delete()
+    db.session.commit()
+    return redirect(url_for('gallery', page=1))

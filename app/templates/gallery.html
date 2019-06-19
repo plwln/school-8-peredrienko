@@ -6,8 +6,10 @@
     <h1 class = "text-info mt-3 mb-5">Галерея</h1>
     <div class="tz-gallery">
         <div class="row">
+            
             {%for picture in pictures.items[::-1]%}
             <div class="col-md-4">
+                    {% if current_user.is_authenticated %}<a class=" mr-3 text-info" href="{{ url_for('deletepic', ident = picture.id) }}">Удалить</a> {%endif%}
                 <div class="thumbnail">
                     <a class="lightbox" href="{{url_for('static', filename=picture.photo)}}">
                         <img src="{{url_for('static', filename=picture.photo)}}" class = "w-100" alt="Park">
@@ -17,6 +19,7 @@
                         <p>{{picture.date}}</p>
                     </div>
                 </div>
+                
             </div>
             {% endfor %}
         </div>
